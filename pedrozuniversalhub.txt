@@ -1,0 +1,146 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "🎮Pedro'z Universal Hub",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Pedroz hubz",
+   LoadingSubtitle = "by Pedro",
+   ShowText = "Pedro'z", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "pedrozuniversalhub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "gimme money with ads",
+      Subtitle = "Money sucker 3000 2.0",
+      Note = "pb coming soon eye guess", -- Use this to tell the user how to get a key
+      FileName = "ilikebaconhotdog", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file blah blah blah idiot
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script, losers
+      GrabKeyFromSite = false, -- OMG NO WAY!1!1!!!1!1!1 IT'S USELESS!1!1!1!
+      Key = {"restricetsddhsyjderjidk"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+--- just a ducking notify
+
+Rayfield:Notify({
+   Title = "Welcome to the hub",
+   Content = "Made by Pedro",
+   Duration = 5.0,
+   Image = 4483362458,
+})
+
+-- home tab
+
+local HomeTab = Window:CreateTab("🏠 Home", 4483362458) -- Title, Image
+
+local Button = HomeTab:CreateButton({
+   Name = "Give Click to TP tool",
+   Callback = function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click to TP"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end,
+})
+
+local Slider = HomeTab:CreateSlider({
+   Name = "Walk Speed",
+   Range = {16, 250},
+   Increment = 5,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Sliderwalkspeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local Slider = HomeTab:CreateSlider({
+   Name = "Jump Power",
+   Range = {50, 500},
+   Increment = 10,
+   Suffix = "Jump",
+   CurrentValue = 50,
+   Flag = "Sliderjumppower", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+       game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+   end,
+})
+
+local Toggle = HomeTab:CreateToggle({
+   Name = "Infinite jump",
+   CurrentValue = false,
+   Flag = "Togglejump", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   if Value then
+	_G.JumpCon = game:GetService("UserInputService").JumpRequest:Connect(function()
+		local h = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+		if h then h:ChangeState(Enum.HumanoidStateType.Jumping) end
+	end)
+else
+	if _G.JumpCon then
+		_G.JumpCon:Disconnect()
+		_G.JumpCon = nil
+	end
+end
+   end,
+})
+ 
+-- misc tab only
+
+local MiscTab = Window:CreateTab("🎲 Misc", 4483362458) -- Title, Image
+
+local Label = MiscTab:CreateLabel("something useful here", 4483362458, Color3.fromRGB(255, 255, 255), false)
+
+local Button = MiscTab:CreateButton({
+   Name = "Destroy GUI",
+   Callback = function()
+      Rayfield:Destroy()
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "Infinite yield",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "Dex",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/dex.lua"))()
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "Simple Spy",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/SimpleSpyV3/main.lua"))()
+   end,
+})
+
+print ("i think the GUI didnt explode! yay")
