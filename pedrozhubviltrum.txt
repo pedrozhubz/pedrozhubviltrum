@@ -1,0 +1,291 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "🎮 Pedroz Hub: Viltrum Incremental",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Pedroz hubz Viltrum Incremental",
+   LoadingSubtitle = "by Pedro",
+   ShowText = "Pedroz viltrum", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   ToggleUIKeybind = "Q", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = true,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "pedrozviltrumincrementalhub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "gimme money with ads",
+      Subtitle = "Money sucker 3000 2.0",
+      Note = "pb coming soon eye guess", -- Use this to tell the user how to get a key
+      FileName = "ilikebaconhotdogdouble", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file blah blah blah idiot
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script, losers
+      GrabKeyFromSite = false, -- OMG NO WAY!1!1!!!1!1!1 IT'S USELESS!1!1!1!
+      Key = {"ky"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+--- just a ducking notify
+
+Rayfield:Notify({
+   Title = "Welcome to the Viltrum Incremental hub",
+   Content = "Made by Pedro",
+   Duration = 5.0,
+   Image = 4483362458,
+})
+
+-- Op tab
+
+local OpTab = Window:CreateTab("OP", 4483362458) -- Title, Image
+
+local Label = OpTab:CreateLabel("Note: You can't do most of things if any auto is turned on.", 4483362458, Color3.fromRGB(0, 0, 0), false) -- Title, Icon, Color, IgnoreTheme
+
+local farming = false
+
+local Toggle = OpTab:CreateToggle({
+   Name = "Infinite XP and lots of money",
+   CurrentValue = false,
+   Flag = "XPmoney",
+
+   Callback = function(Value)
+      farming = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if farming then
+         local args = {
+             [1] = "EnduranceTesting"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .ClaimIncremental
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+local autoPrestige = false
+
+local Toggle = OpTab:CreateToggle({
+   Name = "Auto Prestige",
+   CurrentValue = false,
+   Flag = "AutoPrestige",
+
+   Callback = function(Value)
+      autoPrestige = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoPrestige then
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .Prestige
+             :FireServer()
+      end
+
+      task.wait()
+   end
+end)
+
+local Input = OpTab:CreateInput({
+   Name = "Mission Enemy",
+   CurrentValue = "",
+   PlaceholderText = "EXACT NAME of the enemy",
+   RemoveTextAfterFocusLost = false,
+   Flag = "InputEnemy",
+   Callback = function(Text)
+   
+  local args = {
+    [1] = Text
+}
+
+game:GetService("ReplicatedStorage")
+    .Remotes
+    .StartCombat
+    :FireServer(unpack(args))
+
+   end,
+})
+
+
+-- Auto distribuir stats tab
+
+local StatsTab = Window:CreateTab("Auto Stats", 4483362458) -- Title, Image
+
+local Label = StatsTab:CreateLabel("Note: You can't do most of things if any auto is turned on.", 4483362458, Color3.fromRGB(0, 0, 0), false) -- Title, Icon, Color, IgnoreTheme
+
+local autoStrength = false
+
+local Toggle = StatsTab:CreateToggle({
+   Name = "Auto Strength",
+   CurrentValue = false,
+   Flag = "AutoStrength",
+
+   Callback = function(Value)
+      autoStrength = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoStrength then
+         local args = {
+             [1] = "Strength"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .UpgradeStat
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+local autoAgility = false
+
+local Toggle = StatsTab:CreateToggle({
+   Name = "Auto Agility",
+   CurrentValue = false,
+   Flag = "AutoAgility",
+
+   Callback = function(Value)
+      autoAgility = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoAgility then
+         local args = {
+             [1] = "Agility"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .UpgradeStat
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+local autoAttunement = false
+
+local Toggle = StatsTab:CreateToggle({
+   Name = "Auto Attunement",
+   CurrentValue = false,
+   Flag = "AutoAttunement",
+
+   Callback = function(Value)
+      autoAttunement = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoAttunement then
+         local args = {
+             [1] = "Attunement"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .UpgradeStat
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+
+local autoDefense = false
+
+local Toggle = StatsTab:CreateToggle({
+   Name = "Auto Defense",
+   CurrentValue = false,
+   Flag = "AutoDefense",
+
+   Callback = function(Value)
+      autoDefense = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoDefense then
+         local args = {
+             [1] = "Defense"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .UpgradeStat
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+local autoIntelligence = false
+
+local Toggle = StatsTab:CreateToggle({
+   Name = "Auto Intelligence",
+   CurrentValue = false,
+   Flag = "AutoIntelligence",
+
+   Callback = function(Value)
+      autoIntelligence = Value
+   end,
+})
+
+task.spawn(function()
+   while true do
+      if autoIntelligence then
+         local args = {
+             [1] = "Intelligence"
+         }
+
+         game:GetService("ReplicatedStorage")
+             .Remotes
+             .UpgradeStat
+             :FireServer(unpack(args))
+      end
+
+      task.wait()
+   end
+end)
+
+-- Misc Tab
+
+local MiscTab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+
+local Button = MiscTab:CreateButton({
+   Name = "Destroy Pedroz Viltrum Hub",
+   Callback = function()
+   Rayfield:Destroy()
+   end,
+})
