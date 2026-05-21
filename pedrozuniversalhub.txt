@@ -131,11 +131,11 @@ local Button = MiscTab:CreateButton({
 
 
 
-if game.GameId == 1234567890 then
+if game.GameId == 10059392001 then
    local Button = MiscTab:CreateButton({
    Name = "Viltrum Incremental Hub",
    Callback = function()
-   print ("hello neighbour")
+     loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozhubviltrum.txt'))()
    end,
 })
 end
@@ -145,7 +145,7 @@ end
     local Button = MiscTab:CreateButton({
         Name = "Viltrum Incremental Hub",
         Callback = function()
-            print("placeholder")
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozhubviltrum.txt'))()
         end
     })
 end
