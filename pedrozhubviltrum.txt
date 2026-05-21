@@ -289,3 +289,10 @@ local Button = MiscTab:CreateButton({
    Rayfield:Destroy()
    end,
 })
+
+local Button = MiscTab:CreateButton({
+   Name = "Destroy Pedroz Viltrum Hub",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozuniversalhub.txt'))()
+   end,
+})
