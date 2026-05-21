@@ -291,7 +291,7 @@ local Button = MiscTab:CreateButton({
 })
 
 local Button = MiscTab:CreateButton({
-   Name = "Destroy Pedroz Viltrum Hub",
+   Name = "Pedroz Universal hub",
    Callback = function()
    loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozuniversalhub.txt'))()
    end,
