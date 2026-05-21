@@ -129,12 +129,26 @@ local Button = MiscTab:CreateButton({
    end,
 })
 
-local Button = MiscTab:CreateButton({
+
+
+if game.GameId == 1234567890 then
+   local Button = MiscTab:CreateButton({
    Name = "Viltrum Incremental Hub",
    Callback = function()
    print ("hello neighbour")
    end,
 })
+end
 
+--[[
+ if game.GameId == 1234567890 then
+    local Button = MiscTab:CreateButton({
+        Name = "Viltrum Incremental Hub",
+        Callback = function()
+            print("placeholder")
+        end
+    })
+end
+]]
 
 print ("i think the GUI didnt explode! yay")
