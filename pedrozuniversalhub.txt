@@ -129,18 +129,6 @@ local Button = MiscTab:CreateButton({
    end,
 })
 
-
-
-if game.GameId == 10059392001 then
-   local Button = MiscTab:CreateButton({
-   Name = "Viltrum Incremental Hub",
-   Callback = function()
-     loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozhubviltrum.txt'))()
-   end,
-})
-end
-
---[[
  if game.GameId == 10059392001 then
     local Button = MiscTab:CreateButton({
         Name = "Viltrum Incremental Hub",
@@ -149,6 +137,5 @@ end
         end
     })
 end
-]]
 
 print ("i think the GUI didnt explode! yay")
