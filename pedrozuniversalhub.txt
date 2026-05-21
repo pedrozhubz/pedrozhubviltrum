@@ -125,22 +125,16 @@ local Button = MiscTab:CreateButton({
 local Button = MiscTab:CreateButton({
    Name = "Infinite yield",
    Callback = function()
-   loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
    end,
 })
 
 local Button = MiscTab:CreateButton({
-   Name = "Dex",
+   Name = "Viltrum Incremental Hub",
    Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/dex.lua"))()
+   pe
    end,
 })
 
-local Button = MiscTab:CreateButton({
-   Name = "Simple Spy",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/SimpleSpyV3/main.lua"))()
-   end,
-})
 
 print ("i think the GUI didnt explode! yay")
