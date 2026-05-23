@@ -87,6 +87,7 @@ local Slider = HomeTab:CreateSlider({
    Flag = "Sliderjumppower", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+       game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = 1
    end,
 })
 
@@ -109,6 +110,43 @@ end
    end,
 })
 
+if game.GameId == 10139072503 then
+    local Toggle = HomeTab:CreateToggle({
+        Name = "Infinite Perfect Parry",
+        CurrentValue = false,
+        Flag = "ToggleParry",
+
+        Callback = function(Value)
+            if Value then
+                _G.ParryPart = Instance.new("Part")
+                _G.ParryPart.Size = Vector3.new(2,1,2)
+                _G.ParryPart.Transparency = 1
+                _G.ParryPart.CanCollide = false
+                _G.ParryPart.Anchored = true
+                _G.ParryPart.Parent = workspace
+
+                _G.ParryCon = game:GetService("RunService").RenderStepped:Connect(function()
+                    local head = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Head")
+
+                    if head and _G.ParryPart then
+                        _G.ParryPart.CFrame = head.CFrame * CFrame.new(0,1,0)
+                    end
+                end)
+
+            else
+                if _G.ParryCon then
+                    _G.ParryCon:Disconnect()
+                    _G.ParryCon = nil
+                end
+
+                if _G.ParryPart then
+                    _G.ParryPart:Destroy()
+                    _G.ParryPart = nil
+                end
+            end
+        end,
+    })
+end
 
 local Button = HomeTab:CreateButton({
    Name = "F3X Btools",
