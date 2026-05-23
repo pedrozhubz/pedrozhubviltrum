@@ -108,6 +108,17 @@ else
 end
    end,
 })
+
+
+local Button = HomeTab:CreateButton({
+   Name = "F3X Btools",
+   Callback = function()
+      loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
+   end,
+})
+
+
+
  
 -- misc tab only
 
