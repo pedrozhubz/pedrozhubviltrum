@@ -181,5 +181,19 @@ local Button = MiscTab:CreateButton({
    end,
 })
 
+local Button = MiscTab:CreateButton({
+   Name = "Pedroz Universal hub",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/pedrozhubz/pedrozhubviltrum/refs/heads/main/pedrozuniversalhub.txt'))()
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "Infinite yield",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,
+})
+
 
 print ("Clone tycoon hub : Systems running now.")
